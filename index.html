@@ -1,0 +1,111 @@
+<html>
+	<head>
+
+	</head>
+	<body>
+		<script>
+			class Skill {
+
+				#name
+				#level
+
+				constructor(name, level){
+					this.#name = name
+					this.#level = level
+				}
+				
+				get name(){
+					return this.#name;
+				}
+
+				get level(){
+					return this.#level;
+				}
+
+				set level(level){
+					this.#level = level
+				}
+			}
+
+			class Person {
+				
+				#name
+				#skill
+
+				constructor(name, skill){
+					this.#name = name
+					this.#skill = skill
+				}
+				
+				get name(){
+					return this.#name
+				}
+
+				get skill(){
+					return this.#skill
+				}
+
+				resume(){
+					return this.#name + " " + this.#skill.name + " " + this.#skill.level
+				}
+			}
+
+			class Role {
+				
+				_name
+				_skill
+				_needdays
+				_points
+				_specteddays
+				_person
+
+				constructor(name, skill, needdays, points, specteddays){
+					this._name = name
+					this._skill = skill
+					this._needdays = needdays
+					this._points = points
+					this._specteddays = specteddays
+				}
+			}
+
+			class Project {
+				
+				_name
+				_roles = []
+
+				constructor(name){
+					this._name = name
+				}
+
+				resume(){
+					let res = this._name
+					for(let i = 0; i < this._roles.length; i++){
+						res += " | " + this._roles[i]._name + " " + this._roles[i]._skill.name + " Level: " + this._roles[i]._skill.level + " " + this._roles[i]._person.name
+					}
+					return res
+				}
+			}
+
+			var skill1 = new Skill("C++",5)
+			var skill2 = new Skill("JavaScript",4)
+
+			var p1 = new Person("David",skill1)
+			var p2 = new Person("Adam",skill2)
+
+			var role1 = new Role("role 0",skill1,10,20,5);
+			var role2 = new Role("role 1",skill2,10,20,5);
+
+			var project1 = new Project("Project 1")
+			project1._roles.push(role1);
+			project1._roles.push(role2);
+
+			project1._roles[0]._person = p1;
+			project1._roles[1]._person = p2;
+			
+			console.log(p1.resume())
+			console.log(p2.resume())
+
+			console.log(project1.resume());
+		</script>		
+	</body>
+</html>
