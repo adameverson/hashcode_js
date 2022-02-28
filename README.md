@@ -1,4 +1,4 @@
-# hashcode_js
+# hashcode_js 2022
 - Challenge 1
 
 #### Solution in JS
